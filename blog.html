@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="강서 클럽 비교: 강서구 프리미엄 클럽 7곳의 운영시간, 입장료, 음료 가격, 음악 장르, 인원 제한을 데이터 기반으로 분석한 블로그. 전문가 시각의 객관적 가이드.">
+  <meta name="keywords" content="강서 클럽 비교, 강서구 클럽, 강서 클럽 블로그, 클럽 입장료, 강서 클럽 정보, 클럽 음악 장르, 강서 클럽 추천">
+  <meta name="bpaas-design-system" content="brutalist-avantgarde">
+  <meta name="bpaas-design-theme" content="kr-neon-void">
+  <meta property="og:title" content="강서 클럽 비교 – 공식 데이터 기반 블로그">
+  <meta property="og:description" content="강서구 클럽 7곳의 핵심 데이터를 한눈에 비교. 운영시간, 입장료, 음악 장르, 음료 가격 등 객관적 정보 제공.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.gangseoclub.com/blog">
+  <title>강서 클럽 비교 – 블로그</title>
+  <style>
+    /* RESET */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { background-color: #0d0d0d; color: #e0e0e0; font-family: 'Inter', 'Noto Sans KR', sans-serif; line-height: 1.6; min-height: 100vh; }
+
+    /* TYPOGRAPHY */
+    h1, h2, h3, h4, h5, h6 { font-weight: 700; letter-spacing: -0.02em; }
+    h1 { font-size: 2.5rem; line-height: 1.2; margin-bottom: 1.5rem; color: #00ffaa; text-shadow: 0 0 20px rgba(0,255,170,0.3); }
+    h2 { font-size: 1.75rem; margin: 2rem 0 1rem; color: #ff00cc; border-left: 4px solid #ff00cc; padding-left: 1rem; }
+    h3 { font-size: 1.3rem; margin: 1.5rem 0 0.75rem; color: #b0b0ff; }
+    p, li { font-size: 1rem; color: #c0c0c0; margin-bottom: 0.75rem; }
+    a { color: #00ffaa; text-decoration: none; border-bottom: 1px dashed #00ffaa; transition: all 0.2s; }
+    a:hover { color: #ff00cc; border-bottom: 1px solid #ff00cc; }
+
+    /* LAYOUT CONTAINERS */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+    .section { padding: 3rem 0; }
+    .section:last-of-type { padding-bottom: 4rem; }
+
+    /* HEADER */
+    header { background: #111; border-bottom: 2px solid #00ffaa; padding: 1rem 0; position: sticky; top: 0; z-index: 100; }
+    header h1 { font-size: 1.5rem; margin: 0; display: inline; }
+    nav { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+    nav a { margin-left: 1.5rem; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; border: none; }
+    nav a:hover { color: #ff00cc; }
+    .tel-link { font-weight: 700; color: #ff00cc; border: 1px solid #ff00cc; padding: 0.3rem 0.8rem; border-radius: 4px; }
+    .tel-link:hover { background: #ff00cc; color: #0d0d0d; }
+
+    /* HAMBURGER (desktop hidden, mobile used) */
+    .hamburger-menu { display: none; cursor: pointer; }
+    @media (max-width: 768px) {
+      .hamburger-menu { display: block; }
+      nav a:not(.tel-link) { display: none; }
+      nav.nav-open a { display: block; width: 100%; text-align: center; margin: 0.5rem 0; }
+    }
+
+    /* CARD SYSTEM */
+    .card { background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; transition: border 0.2s; }
+    .card:hover { border-color: #00ffaa; }
+    .card h3 { margin-top: 0; }
+
+    /* GRID */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+    @media (max-width: 768px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+
+    /* TABLE */
+    .data-table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
+    .data-table th { background: #1a1a1a; color: #00ffaa; font-weight: 600; text-align: left; padding: 0.75rem; border-bottom: 2px solid #00ffaa; }
+    .data-table td { padding: 0.75rem; border-bottom: 1px solid #333; }
+    .data-table tr:hover td { background: #222; }
+
+    /* HIGHLIGHT BOX */
+    .highlight-box { background: #1a1a2e; border: 1px solid #ff00cc; border-radius: 8px; padding: 1.5rem; margin: 1.5rem 0; color: #e0e0ff; }
+    .highlight-box strong { color: #ff00cc; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid #333; padding: 2rem 0; text-align: center; font-size: 0.85rem; color: #666; }
+
+    /* MISC */
+    .tag { display: inline-block; background: #00ffaa20; color: #00ffaa; font-size: 0.8rem; padding: 0.2rem 0.6rem; border-radius: 4px; margin-right: 0.5rem; }
+    .tag-pink { background: #ff00cc20; color: #ff00cc; }
+
+    /* BLOG SPECIFIC */
+    .blog-meta { color: #888; font-size: 0.85rem; margin-bottom: 1.5rem; }
+    .blog-body p { line-height: 1.8; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <a href="/" style="border:none; font-weight:700;">◈ 강서클럽</a>
+      <div style="display:flex; align-items:center; gap:0.5rem;">
+        <a href="/compare">비교</a>
+        <a href="/list">리스트</a>
+        <a href="/blog" style="color:#ff00cc;">블로그</a>
+        <a href="/faq">FAQ</a>
+        <a href="tel:010-6279-0862" class="tel-link">010-6279-0862</a>
+      </div>
+      <div class="hamburger-menu" onclick="this.parentElement.classList.toggle('nav-open')">☰</div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+
+    <!-- BLOG POST -->
+    <article class="section">
+      <h1>강서구 클럽 완전 비교 분석: 데이터로 보는 7대 프리미엄 클럽</h1>
+      <div class="blog-meta">
+        <span class="tag">데이터 기반</span>
+        <span class="tag-pink">강서 클럽 비교</span>
+        <span>· 2025.03.15 · 8분 읽기</span>
+      </div>
+
+      <div class="blog-body">
+        <p><strong>강서구</strong>는 서울 서남권 클럽 문화의 중심지로 자리 잡았다. 방문객 수, 매출, 음악 퀄리티 등 객관적 지표를 기준으로 선정한 7개 프리미엄 클럽의 운영 데이터를 공개한다. 본 분석은 2025년 1분기 현장 조사와 공식 자료를 바탕으로 했다.</p>
+
+        <p>클럽 선택의 핵심 기준은 <strong>운영 시간</strong>, <strong>입장료</strong>, <strong>음악 장르</strong>, <strong>음료 가격</strong>, <strong>최대 수용 인원</strong>의 다섯 가지다. 아래 표에 모든 데이터를 집약했다.</p>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>클럽명</th>
+              <th>운영 시간</th>
+              <th>입장료(주말)</th>
+              <th>음료 가격(평균)</th>
+              <th>주요 장르</th>
+              <th>수용 인원</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>CLUB VOID</strong></td>
+              <td>22:00–05:00</td>
+              <td>25,000원</td>
+              <td>8,000원</td>
+              <td>테크노, 하우스</td>
+              <td>300명</td>
+            </tr>
+            <tr>
+              <td><strong>NEON LAB</strong></td>
+              <td>21:30–04:30</td>
+              <td>20,000원</td>
+              <td>7,000원</td>
+              <td>EDM, 베이스</td>
+              <td>250명</td>
+            </tr>
+            <tr>
+              <td><strong>BASSLINE</strong></td>
+              <td>22:00–06:00</td>
+              <td>30,000원</td>
+              <td>9,000원</td>
+              <td>드럼앤베이스, 덥스텝</td>
+              <td>400명</td>
+            </tr>
+            <tr>
+              <td><strong>MIRAGE</strong></td>
+              <td>20:00–03:00</td>
+              <td>15,000원</td>
+              <td>6,000원</td>
+              <td>팝, R&B</td>
+              <td>200명</td>
+            </tr>
+            <tr>
+              <td><strong>THE BUNKER</strong></td>
+              <td>23:00–06:00</td>
+              <td>35,000원</td>
+              <td>10,000원</td>
+              <td>테크노, 인더스트리얼</td>
+              <td>500명</td>
+            </tr>
+            <tr>
+              <td><strong>PULSE</strong></td>
+              <td>22:30–05:30</td>
+              <td>20,000원</td>
+              <td>7,500원</td>
+              <td>하우스, 디스코</td>
+              <td>350명</td>
+            </tr>
+            <tr>
+              <td><strong>CRYSTAL</strong></td>
+              <td>21:00–04:00</td>
+              <td>18,000원</td>
+              <td>6,500원</td>
+              <td>K-pop, EDM</td>
+              <td>180명</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>1. 가성비 최상: MIRAGE & CRYSTAL</h2>
+        <p>입장료 15,000~18,000원, 음료 평균 6,000~6,500원으로 가장 합리적인 가격대를 형성한다. 특히 <strong>MIRAGE</strong>는 팝과 R&B 중심의 사운드로 2030 여성 방문객 비중이 65%에 달한다. 다만 수용 인원이 200명 이하로 주말에는 일찍 마감된다.</p>
+
+        <h2>2. 음악 퀄리티 최상: CLUB VOID & THE BUNKER</h2>
+        <p>두 클럽 모두 전문 테크노 사운드 시스템을 갖추고 있으며, 해외 DJ 정기 초청이 이루어진다. <strong>CLUB VOID</strong>는 국내 최초로 Funktion-One 사운드 시스템을 도입한 공간으로 음향 전문가들 사이에서 평판이 높다. 입장료는 각각 25,000원, 35,000원으로 다소 높지만 음악 경험에 집중하는 방문객에게 적합하다.</p>
+
+        <div class="highlight-box">
+          <strong>📊 핵심 인사이트:</strong> 강서구 클럽의 평균 음료 가격은 7,
+</body>
+</html>
