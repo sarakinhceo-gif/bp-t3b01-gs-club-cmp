@@ -1,3 +1,10 @@
 User-agent: *
 Allow: /
-Sitemap: https://sarakinhceo-gif.github.io/bp-t3b01-gs-club-cmp//sitemap.xml
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+Sitemap: https://gangseo-hot-club.mapo-room-guide.xyz/sitemap.xml
